@@ -24,45 +24,45 @@ document.querySelector(".submit").addEventListener("click", function () {
     });
 let roll1, roll2 = 0
 let firstP = "";
-document.querySelector(".roll").addEventListener("click", function(){ 
-    if (document.querySelector(".p1").clicked == true) {
-        console.log(document.querySelector(".p1").clicked)
-        roll1 = Math.floor(Math.random() * 6)
-        document.querySelector(".score1").textContent=`Player 1 rolled: ${roll1}`;
-        document.querySelector(".dice").textContent= `Dice: ${roll1}`;
-        document.querySelector(".p1").classList.add("hide");
-        document.querySelector(".p2").addEventListener("click", function() {
-            roll2 = Math.floor(Math.random() * 6)
-            document.querySelector(".score2").textContent=`Player 2 rolled: ${roll2}`;
-            document.querySelector(".dice").textContent= `Dice: ${roll1}`;
-        });
-    }
-    else if (document.querySelector(".p2").clicked == true){
-        roll2 = Math.floor(Math.random() * 6)
-        document.querySelector(".score2").textContent=`Player 2 rolled: ${roll2}`;
-        document.querySelector(".dice").textContent= `Dice: ${roll1}`;
-        document.querySelector(".p2").classList.add("hide");
-        document.querySelector(".p1").addEventListener("click", function() {
-            roll1 = Math.floor(Math.random() * 6)
-            document.querySelector(".score1").textContent=`Player 1 rolled: ${roll1}`;
-            document.querySelector(".dice").textContent= `Dice: ${roll1}`;
-        });
-    }
-    if (roll1 != 0 && roll2 != 0){
-        if (roll1 < roll2){
-            firstP = "Player 2 goes first";
+function roll(){ 
+    roll1 = Math.ceil(Math.random() * 6)
+    document.querySelector(".score1").textContent=`Player 1 rolled: ${roll1} `;
+    document.querySelector(".diceOne").textContent= `Dice: ${roll1} `;
+    document.querySelector(".p1").disabled = true;                
+    document.querySelector(".p2").disabled = false;
+    document.querySelector(".score2").textContent=`Player 2: `;
+    document.querySelector(".diceTwo").textContent= `Dice: `;
+    document.querySelector(".p2").addEventListener("click", function() {
+        // let roll2 = roll1;
+        roll2 = Math.ceil(Math.random() * 6);
+        document.querySelector(".score2").textContent="Player 2 rolled: " + roll2;
+        document.querySelector(".diceTwo").textContent=`Dice: ${roll2} `;
+        document.querySelector(".p2").disabled = true; 
+    
+        console.log(roll1, roll2)
+        if (roll1 != 0 && roll2 != 0){
             document.querySelector(".outcome").classList.remove("hide");
+            if (roll1 < roll2){
+                firstP = "Player 2 goes first";
+            }
+            else if (roll2 < roll1){
+                firstP = "Player 1 goes first";
+            }
+            else {
+                firstP = "Tie. Reroll."
+                document.querySelector(".p1").classList.remove("hide");
+                roll1, roll2 = 0
+                document.querySelector(".score1").textContent=`Player 1: `;
+                document.querySelector(".diceOne").textContent= `Dice: `;
+                
+                document.querySelector(".p1").disabled = false;
+            }
+            console.log(firstP)
+            document.querySelector(".outcome").textContent= firstP;
         }
-        else if (roll2 < roll1){
-            firstP = "Player 1 goes first";
-            document.querySelector(".outcome").classList.remove("hide");
-        }
-        else {
-            firstP = "Tie. Reroll."
-        }
-    document.querySelector(".outcome").textContent= firstP;
-
-}});
+    })
+    };
+document.querySelector(".roll").addEventListener("click", roll);
 
 
 
