@@ -1,3 +1,25 @@
 .hide{
     display:none;
 }
+
+body{
+    background-color:#dcf1f9 ;
+}
+
+h1{
+    color:#012059;;
+    font-family: Verdana;
+}
+
+.enter,.roll_to_start{
+    color: #b3004d;
+    font-size:larger;
+}
+
+.score1,.score2{
+    color: #012059;
+}
+button{
+    background-color:rgb(250, 159, 209);
+    color: white;
+}
