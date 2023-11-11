@@ -23,3 +23,20 @@ button{
     background-color:rgb(250, 159, 209);
     color: white;
 }
+
+.round_no{
+    padding-left: 1%;
+    background-color:white;
+}
+
+span {
+    margin-left: 3%;
+}
+
+b{
+    margin-left: 1%;
+}
+
+.who_turn{
+    text-decoration: underline;
+}
