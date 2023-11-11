@@ -25,7 +25,7 @@ document.querySelector(".submit").addEventListener("click", function () {
 let roll1, roll2 = 0
 let firstP = "";
 let curP = 1;
-let firstPlayer = 0;
+let roundNo = 0;
 function roll(){ 
     if (curP == 1){
         roll1 = Math.ceil(Math.random() * 6)
@@ -46,11 +46,13 @@ function roll(){
                 firstP = "Player 2 goes first";
                 firstPlayer, curP = 2;
                 document.querySelector(".continue").classList.remove("hide");
+                roundNo=1;
             }
             else if (roll2 < roll1){
                 firstP = "Player 1 goes first";
                 firstPlayer, curP = 1;
                 document.querySelector(".continue").classList.remove("hide");
+                roundNo=1;
             }
             else {
                 firstP = "Tie. Reroll."
@@ -68,14 +70,24 @@ function roll(){
    }
     };
 document.querySelector(".roll").addEventListener("click", roll);
-let roundNo = 1
+
 document.querySelector(".continue").addEventListener("click", function(){
     document.querySelector(".round").classList.remove("hide");
     document.querySelector(".roll_to_start").classList.add("hide");
     document.querySelector(".round_no").textContent= `Round ${roundNo}`;
-
-
+    
 });
-
 let whichDice = 1;
 
+document.querySelector(".roll_round").addEventListener("click", play());
+
+function play(){
+    while (roundNo <= rounds){
+        if (curP==1){
+            document.querySelector(".who_turn").textContent= "Player 1's turn";
+        }
+        else if (curP==2){
+            document.querySelector(".who_turn").textContent= "Player 2's turn";
+        }
+    }
+}
