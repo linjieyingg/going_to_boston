@@ -24,11 +24,37 @@ button{
     color: white;
 }
 
+.theDie{
+    background-color: white;
+    border: solid 5px white;
+}
+
 .round_no{
     padding-left: 1%;
     background-color:white;
+    color:#012059;
+}
+.scoren1,.scoren2{
+    color: #b3004d;
+    font-size: medium;
 }
 
+.roll1,.roll2{
+    color:#012b79
+}
+.winbox{
+    padding-left: 30px;
+    color:#990043;
+    border: dotted 3px white;
+}
+.round_win{
+    padding-left: 10px;
+    color:#990043;
+    border: dotted 3px white;
+}
+.who_turn,.dice_no{
+    color:#011335;
+}
 span {
     margin-left: 3%;
 }
